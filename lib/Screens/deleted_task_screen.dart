@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/Model/task.dart';
 
 import 'package:todo_app/Screens/my_drawer_screen.dart';
 import 'package:todo_app/TaskBlock/bloc_export.dart';
@@ -12,43 +13,32 @@ class DeletedTask extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<TaskBloc, TaskState>(
       builder: (context, state) {
+        List<Task> taskList = state.removeTasks;
         return Scaffold(
-            appBar: AppBar(
-              title: const Text(
-                'Deleted Tasks',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
+          appBar: AppBar(
+            title: const Text(
+              'Deleted Tasks',
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
-              centerTitle: true,
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.add),
-                )
-              ],
             ),
-            drawer: MyDrawer(),
-            body: Column(
-              children: [
-                Center(
-                  child: Chip(
-                    label: Text(
-                      '${state.removeTasks.length}' ' Tasks',
-                    ),
+            centerTitle: true,
+          ),
+          drawer: MyDrawer(),
+          body: Column(
+            children: [
+              Center(
+                child: Chip(
+                  label: Text(
+                    '${taskList.length}' ' Tasks',
                   ),
                 ),
-                TaskList(
-                  taskList: state.removeTasks,
-                )
-              ],
-            ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {},
-              child: const Icon(Icons.add),
-            ));
+              ),
+            ],
+          ),
+        );
       },
     );
   }
