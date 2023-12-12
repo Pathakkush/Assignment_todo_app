@@ -3,7 +3,6 @@ import 'package:todo_app/Model/task.dart';
 
 import 'package:todo_app/Screens/my_drawer_screen.dart';
 import 'package:todo_app/TaskBlock/bloc_export.dart';
-import 'package:todo_app/Widgets/task_list.dart';
 
 class DeletedTask extends StatelessWidget {
   const DeletedTask({super.key});
